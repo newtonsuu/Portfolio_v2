@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jericho Guanga — Cybersecurity &amp; Cloud Identity</title>
+  <meta name="description" content="Portfolio of Jericho James Guanga — cybersecurity professional focused on cloud identity, security operations, and AI automation. Accenture PH · Mapua University · SC-300 certified." />
+  <meta property="og:title" content="Jericho Guanga — Cybersecurity Portfolio" />
+  <meta property="og:description" content="Cloud identity, security operations, and AI automation. Guarded by a very serious pixel crab." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Press+Start+2P&display=swap" rel="stylesheet" />
+
+  <link rel="icon" id="favicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Crect x='1' y='2' width='1' height='1' fill='%23e8603c'/%3E%3Crect x='6' y='2' width='1' height='1' fill='%23e8603c'/%3E%3Crect x='2' y='3' width='4' height='3' fill='%23e8603c'/%3E%3Crect x='1' y='4' width='6' height='2' fill='%23e8603c'/%3E%3Crect x='3' y='4' width='1' height='1' fill='%23fff6ec'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%23fff6ec'/%3E%3C/svg%3E" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ambient background -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="scanline" aria-hidden="true"></div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="navbar">
+    <nav class="nav-inner">
+      <a href="#top" class="nav-logo">
+        <span class="nav-crab" id="navCrab" aria-hidden="true"></span>
+        <span class="nav-name">JERICHO&nbsp;GUANGA</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certs">Certs</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="nav-mobile" id="navMobile">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certs">Certs</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy reveal">
+          <p class="eyebrow pixel-font">Cybersecurity · Cloud Identity · AI Automation</p>
+          <h1 class="hero-title">
+            Securing clouds,<br />
+            <span class="accent-gradient">one identity</span> at a time.
+          </h1>
+          <div class="divider" aria-hidden="true"></div>
+          <p class="hero-sub">
+            I'm <strong>Jericho "James" Guanga</strong> — cybersecurity intern at
+            <strong>Accenture Philippines</strong>, working across IAM, Microsoft Sentinel,
+            and Zero Trust. I automate the boring parts with Claude&nbsp;+&nbsp;MCP.
+          </p>
+          <div class="hero-ctas">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="assets/Jericho-Guanga-Resume.pdf" class="btn btn-outline" download>Download Résumé</a>
+          </div>
+          <div class="hero-badges">
+            <span class="badge">SC-300</span>
+            <span class="badge">SC-900</span>
+            <span class="badge">ISC2 CC</span>
+            <span class="badge">AZ-900</span>
+            <span class="badge badge-gold">CTF · 1st Place</span>
+          </div>
+        </div>
+
+        <div class="hero-terminal reveal reveal-delay-1">
+          <!-- the crab lives here, perched on the terminal -->
+          <div class="crab-wrap" id="crabWrap">
+            <div class="crab-bubble" id="crabBubble" role="status">snip snip! 🦀</div>
+            <div class="crab" id="crab" title="click me!"></div>
+          </div>
+
+          <div class="terminal" id="terminal">
+            <div class="terminal-bar">
+              <span class="t-dot t-red"></span>
+              <span class="t-dot t-yellow"></span>
+              <span class="t-dot t-green"></span>
+              <span class="terminal-title">jericho@sec: ~</span>
+            </div>
+            <div class="terminal-body" id="terminalBody" tabindex="0" aria-label="Interactive terminal. Type help for commands."></div>
+          </div>
+          <p class="terminal-hint">psst — the terminal is real. type <code>help</code></p>
+        </div>
+      </div>
+
+      <a class="scroll-indicator" href="#about" aria-label="Scroll to About">
+        <span class="pixel-font">scroll</span>
+        <span class="scroll-line"></span>
+      </a>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="section-inner">
+        <p class="eyebrow pixel-font reveal">&gt; whoami</p>
+        <h2 class="section-title reveal">About</h2>
+        <div class="divider reveal" aria-hidden="true"></div>
+
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>
+              I'm an entry-level cybersecurity professional from <strong>Makati City, Philippines</strong>,
+              currently in the <strong>Cyber Mastery Program at Accenture</strong> — provisioning identities,
+              tuning Conditional Access, and triaging Sentinel alerts with KQL by day.
+            </p>
+            <p>
+              What makes me a little different: I build <strong>AI agents</strong> that do security work.
+              I wire up <strong>Anthropic Claude</strong> with <strong>Model Context Protocol (MCP)</strong> servers
+              against Entra ID, Microsoft Graph, and Sentinel — so access reports, alert summaries, and admin
+              checks run themselves.
+            </p>
+            <p>
+              Off the clock I play CTFs (took <strong>1st place</strong> with OSINT and video steganography),
+              farm my way through <strong>Stardew Valley</strong>, and ship side projects. My spirit animal is
+              the rock crab: small, armored, and surprisingly hard to remove once attached to a problem.
+            </p>
+          </div>
+
+          <aside class="about-card reveal reveal-delay-1">
+            <img src="https://github.com/newtonsuu.png?size=160" alt="Jericho's GitHub avatar" class="about-avatar" width="80" height="80" loading="lazy" />
+            <ul class="about-facts">
+              <li><span class="fact-k">base</span><span>Makati City, PH 🇵🇭</span></li>
+              <li><span class="fact-k">role</span><span>Cybersecurity Intern @ Accenture</span></li>
+              <li><span class="fact-k">edu</span><span>BS IT — Mapúa University '26</span></li>
+              <li><span class="fact-k">github</span><span><a href="https://github.com/newtonsuu" target="_blank" rel="noopener">@newtonsuu</a></span></li>
+              <li><span class="fact-k">stack</span><span>Azure · Entra ID · Sentinel · Python</span></li>
+              <li><span class="fact-k">status</span><span class="status-ok">● open to opportunities</span></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section section-alt" id="experience">
+      <div class="section-inner">
+        <p class="eyebrow pixel-font reveal">&gt; cat experience.log</p>
+        <h2 class="section-title reveal">Experience</h2>
+        <div class="divider reveal" aria-hidden="true"></div>
+
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-head">
+                <h3>Cybersecurity Intern — Cyber Mastery Program</h3>
+                <span class="timeline-when">Feb 2026 — Present</span>
+              </div>
+              <p class="timeline-org">Accenture Philippines</p>
+              <ul>
+                <li>IAM operations: user provisioning, RBAC role assignments, and access validation in Azure &amp; Entra ID.</li>
+                <li>Implemented Zero Trust and least-privilege via Conditional Access policies and identity governance.</li>
+                <li>Monitored and triaged Sentinel alerts, running KQL log analysis for incident response and escalation.</li>
+                <li>Supported identity security reviews and cloud administration aligned with SOC &amp; IAM responsibilities.</li>
+              </ul>
+              <div class="tags">
+                <span>Entra ID</span><span>Sentinel</span><span>KQL</span><span>Zero Trust</span><span>RBAC</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-head">
+                <h3>Sponsorship Committee — Central Student Council</h3>
+                <span class="timeline-when">2024 — 2025</span>
+              </div>
+              <p class="timeline-org">Mapúa University</p>
+              <ul>
+                <li>Researched and pitched 10+ sponsorships, securing partners that funded major student events.</li>
+                <li>Managed deliverables, tracked commitments, and produced post-event sponsor reports.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-head">
+                <h3>Student Adviser — School of IT</h3>
+                <span class="timeline-when">2024</span>
+              </div>
+              <p class="timeline-org">Mapúa University</p>
+              <ul>
+                <li>Mentored 15+ students in programming, networking, and IT fundamentals.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section" id="skills">
+      <div class="section-inner">
+        <p class="eyebrow pixel-font reveal">&gt; inventory --equipped</p>
+        <h2 class="section-title reveal">Skill Loadout</h2>
+        <div class="divider reveal" aria-hidden="true"></div>
+
+        <div class="skills-grid">
+          <div class="skill-card reveal">
+            <h3><span class="skill-icon">☁️</span> Cloud &amp; Identity</h3>
+            <div class="chips">
+              <span>Microsoft Azure</span><span>Entra ID</span><span>Microsoft 365</span>
+              <span>RBAC</span><span>Conditional Access</span><span>Identity Governance</span>
+            </div>
+          </div>
+          <div class="skill-card reveal reveal-delay-1">
+            <h3><span class="skill-icon">🛡️</span> Security Operations</h3>
+            <div class="chips">
+              <span>Microsoft Sentinel</span><span>KQL</span><span>Log Analysis</span>
+              <span>Alert Triage</span><span>Incident Response</span><span>Threat Detection</span>
+              <span>Zero Trust</span><span>IAM</span>
+            </div>
+          </div>
+          <div class="skill-card reveal reveal-delay-2">
+            <h3><span class="skill-icon">🤖</span> AI &amp; Automation</h3>
+            <div class="chips">
+              <span>Anthropic Claude</span><span>MCP Servers</span><span>AI Agent Workflows</span>
+              <span>Microsoft Graph API</span><span>Gemini AI</span><span>Prompt Engineering</span>
+            </div>
+          </div>
+          <div class="skill-card reveal reveal-delay-1">
+            <h3><span class="skill-icon">⚙️</span> Development</h3>
+            <div class="chips">
+              <span>Python</span><span>Java</span><span>JavaScript</span><span>SQL / PostgreSQL</span>
+              <span>React</span><span>Supabase</span><span>REST APIs</span><span>Git</span>
+            </div>
+          </div>
+          <div class="skill-card reveal reveal-delay-2">
+            <h3><span class="skill-icon">🌐</span> Networking</h3>
+            <div class="chips">
+              <span>VLANs</span><span>Routing &amp; Switching</span><span>Network Fundamentals</span>
+            </div>
+          </div>
+          <div class="skill-card skill-card-ctf reveal reveal-delay-3">
+            <h3><span class="skill-icon">🚩</span> CTF Toolkit</h3>
+            <div class="chips">
+              <span>OSINT</span><span>Google Dorking</span><span>Steganography</span><span>Kali Linux</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTF BANNER ============ -->
+    <section class="ctf-banner reveal">
+      <div class="ctf-inner">
+        <div class="ctf-flag pixel-font" aria-hidden="true">🚩</div>
+        <div>
+          <p class="eyebrow pixel-font">achievement unlocked</p>
+          <h2 class="ctf-title">Capture The Flag — 1st Place</h2>
+          <p class="ctf-sub">
+            K1RA Cybersecurity Group, Mapúa University · 2025 — OSINT and Google dorking through
+            web-exploitation challenges, then pulled encoded payloads out of <em>video steganography</em>
+            with Kali Linux to decode the final flag.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section" id="projects">
+      <div class="section-inner">
+        <p class="eyebrow pixel-font reveal">&gt; ls ~/projects</p>
+        <h2 class="section-title reveal">Projects</h2>
+        <div class="divider reveal" aria-hidden="true"></div>
+
+        <div class="projects-grid">
+          <article class="project-card featured reveal">
+            <p class="project-type">AI × Security</p>
+            <h3>Claude MCP Security Automation</h3>
+            <p>
+              AI agent workflows connecting Anthropic Claude + MCP servers to Entra ID, Microsoft Graph,
+              Sentinel, and M365 — auto-generating access reports, alert summaries, and admin checks that
+              used to be manual.
+            </p>
+            <div class="tags"><span>Claude</span><span>MCP</span><span>Graph API</span><span>Sentinel</span></div>
+            <div class="project-links"><span class="project-note">internal tooling · 2026</span></div>
+          </article>
+
+          <article class="project-card reveal reveal-delay-1">
+            <p class="project-type">Security Case Study</p>
+            <h3>Trade Portal IAM Simulation</h3>
+            <p>
+              Educational mock-up of a legacy trade portal used as a cybersecurity case study —
+              demonstrating IAM weaknesses in old systems and how to harden them.
+            </p>
+            <div class="tags"><span>JavaScript</span><span>IAM</span><span>Legacy Systems</span></div>
+            <div class="project-links">
+              <a href="https://github.com/newtonsuu/trade-portal-iam-simulation" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal reveal-delay-2">
+            <p class="project-type">AI E-Learning</p>
+            <h3>Smart Recall</h3>
+            <p>
+              AI-powered study app: generates material with Gemini and schedules spaced repetition.
+              React front end, Supabase/PostgreSQL schema and analytics designed by me.
+            </p>
+            <div class="tags"><span>React</span><span>Supabase</span><span>Gemini</span><span>TypeScript</span></div>
+            <div class="project-links">
+              <a href="https://smart-recall-phi.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
+              <a href="https://github.com/newtonsuu/SmartRecall" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <p class="project-type">Python Tooling</p>
+            <h3>Gmail Backup</h3>
+            <p>
+              Archives Gmail by label into folders with a resumable SQLite index and Excel export —
+              built for real backup hygiene, survives interruptions.
+            </p>
+            <div class="tags"><span>Python</span><span>SQLite</span><span>Gmail API</span></div>
+            <div class="project-links">
+              <a href="https://github.com/newtonsuu/gmail-backup" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal reveal-delay-1">
+            <p class="project-type">Mobile Health</p>
+            <h3>DermaTrack — Acne</h3>
+            <p>
+              My rendition of DermaTrack focused on acne tracking — photo-based progress logging
+              built with Flutter.
+            </p>
+            <div class="tags"><span>Dart</span><span>Flutter</span><span>Supabase</span></div>
+            <div class="project-links">
+              <a href="https://github.com/newtonsuu/dermatrack-acne" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal reveal-delay-2">
+            <p class="project-type">Just for Fun</p>
+            <h3>FLAMES</h3>
+            <p>
+              The classic name-compatibility calculator, resurrected in PHP with the letter-matching
+              algorithm everyone played in grade school. Peak engineering.
+            </p>
+            <div class="tags"><span>PHP</span><span>Algorithms</span><span>Nostalgia</span></div>
+            <div class="project-links">
+              <a href="https://github.com/newtonsuu/FLAMES" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="projects-more reveal">
+          more on <a href="https://github.com/newtonsuu?tab=repositories" target="_blank" rel="noopener">github.com/newtonsuu →</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ CERTIFICATIONS ============ -->
+    <section class="section section-alt" id="certs">
+      <div class="section-inner">
+        <p class="eyebrow pixel-font reveal">&gt; sudo verify --all</p>
+        <h2 class="section-title reveal">Certifications</h2>
+        <div class="divider reveal" aria-hidden="true"></div>
+
+        <div class="certs-grid">
+          <div class="cert-card reveal">
+            <p class="cert-code">SC-300</p>
+            <h3>Identity &amp; Access Administrator Associate</h3>
+            <p class="cert-meta">Microsoft · May 2026</p>
+          </div>
+          <div class="cert-card reveal reveal-delay-1">
+            <p class="cert-code">SC-900</p>
+            <h3>Security, Compliance &amp; Identity Fundamentals</h3>
+            <p class="cert-meta">Microsoft · May 2026</p>
+          </div>
+          <div class="cert-card reveal reveal-delay-2">
+            <p class="cert-code">CC</p>
+            <h3>Certified in Cybersecurity</h3>
+            <p class="cert-meta">ISC2 · Jul 2025</p>
+          </div>
+          <div class="cert-card reveal reveal-delay-1">
+            <p class="cert-code">AZ-900</p>
+            <h3>Azure Fundamentals</h3>
+            <p class="cert-meta">Microsoft · May 2024</p>
+          </div>
+          <div class="cert-card reveal reveal-delay-2">
+            <p class="cert-code">OCI AI</p>
+            <h3>AI Foundations Associate</h3>
+            <p class="cert-meta">Oracle · Sep 2025</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <div class="section-inner contact-inner">
+        <p class="eyebrow pixel-font reveal">&gt; ping jericho</p>
+        <h2 class="section-title reveal">Let's connect</h2>
+        <div class="divider divider-center reveal" aria-hidden="true"></div>
+        <p class="contact-sub reveal">
+          Looking for someone who speaks both <strong>KQL</strong> and <strong>crab</strong>?<br />
+          I'm open to security operations, IAM, and AI-automation roles.
+        </p>
+        <div class="contact-ctas reveal">
+          <a class="btn btn-primary" href="mailto:jericho.rguanga@hotmail.com">jericho.rguanga@hotmail.com</a>
+          <a class="btn btn-outline" href="https://github.com/newtonsuu" target="_blank" rel="noopener">GitHub — @newtonsuu</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-crab" id="footerCrab" aria-hidden="true"></span>
+      <p>© 2026 Jericho James Guanga — built with claws 🦀 in Makati City</p>
+      <p class="footer-tip pixel-font">tip: click the crab. it has opinions.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
