@@ -194,7 +194,7 @@ AZ-900  Azure Fundamentals .................... May 2024`,
 > decoded final flag with Kali → <span class="t-warn">🏆 1st place</span>`,
   contact: () =>
     `email   → <a href="mailto:jericho.rguanga@hotmail.com">jericho.rguanga@hotmail.com</a>
-github  → <a href="https://github.com/newtonsuu" target="_blank" rel="noopener">github.com/newtonsuu</a>
+github  → <a href="https://github.com/newtonsuu" target="_blank" rel="noopener noreferrer">github.com/newtonsuu</a>
 base    → Makati City, Philippines`,
   crab: () => {
     crabEl.classList.remove("hop");
@@ -255,6 +255,15 @@ async function bootTerminal() {
   spawnInput();
 }
 
+function escapeHTML(s) {
+  return s.replace(/[&<>"']/g, (c) => (
+    { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
+  ));
+}
+
+const cmdHistory = [];
+let historyIdx = -1;
+
 function spawnInput() {
   const row = document.createElement("div");
   row.innerHTML = PROMPT;
@@ -268,12 +277,34 @@ function spawnInput() {
   term.scrollTop = term.scrollHeight;
 
   input.addEventListener("keydown", (e) => {
+    /* ↑ / ↓ — command history */
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (cmdHistory.length && historyIdx < cmdHistory.length - 1) {
+        historyIdx++;
+        input.value = cmdHistory[cmdHistory.length - 1 - historyIdx];
+      }
+      return;
+    }
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (historyIdx > 0) {
+        historyIdx--;
+        input.value = cmdHistory[cmdHistory.length - 1 - historyIdx];
+      } else {
+        historyIdx = -1;
+        input.value = "";
+      }
+      return;
+    }
     if (e.key !== "Enter") return;
     const raw = input.value.trim();
     const cmd = raw.toLowerCase();
-    row.innerHTML = PROMPT + `<span class="t-cmd">${raw.replace(/</g, "&lt;")}</span>`;
+    row.innerHTML = PROMPT + `<span class="t-cmd">${escapeHTML(raw)}</span>`;
 
     if (cmd) {
+      cmdHistory.push(raw);
+      historyIdx = -1;
       const handler = COMMANDS[cmd] ?? COMMANDS[cmd.split(" ")[0]];
       if (handler === "CLEAR" || cmd === "clear") {
         term.innerHTML = "";
@@ -281,7 +312,7 @@ function spawnInput() {
         termLine(typeof handler === "function" ? handler() : handler, "t-out");
       } else {
         termLine(
-          `command not found: ${cmd.replace(/</g, "&lt;")} — try <span class="t-ok">help</span>`,
+          `command not found: ${escapeHTML(cmd)} — try <span class="t-ok">help</span>`,
           "t-out"
         );
       }
@@ -392,10 +423,27 @@ burger.addEventListener("click", () => {
   burger.classList.toggle("open", open);
   burger.setAttribute("aria-expanded", open);
 });
+function closeMobileMenu() {
+  mobileMenu.classList.remove("open");
+  burger.classList.remove("open");
+  burger.setAttribute("aria-expanded", "false");
+}
 mobileMenu.querySelectorAll("a").forEach((a) =>
-  a.addEventListener("click", () => {
-    mobileMenu.classList.remove("open");
-    burger.classList.remove("open");
-    burger.setAttribute("aria-expanded", "false");
-  })
+  a.addEventListener("click", closeMobileMenu)
 );
+/* Esc closes the mobile menu; click outside does too */
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && mobileMenu.classList.contains("open")) {
+    closeMobileMenu();
+    burger.focus();
+  }
+});
+document.addEventListener("click", (e) => {
+  if (
+    mobileMenu.classList.contains("open") &&
+    !mobileMenu.contains(e.target) &&
+    !burger.contains(e.target)
+  ) {
+    closeMobileMenu();
+  }
+});
