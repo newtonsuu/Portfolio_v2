@@ -1,6 +1,6 @@
 /* ============================================================
    Jericho Guanga — portfolio
-   dark cyber theme × stardew pixel warmth
+   dark cyber theme × golden lion warmth
    ============================================================ */
 
 :root {
@@ -20,7 +20,7 @@
   --accent-glow: rgba(61, 245, 164, 0.14);
   --cyan: #5ac8f5;
 
-  --crab: #e8603c;          /* stardew crab orange */
+  --crab: #e8603c;          /* mascot warmth */
   --crab-light: #f5936b;
   --gold: #f2c14e;
 
@@ -204,9 +204,27 @@ a:hover { color: var(--crab-light); }
 .nav-links a:hover::after { width: 100%; }
 .nav-links .nav-cta { color: var(--accent); }
 
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border-bright);
+  color: var(--muted);
+  font-size: 1rem; line-height: 1;
+  width: 34px; height: 34px;
+  cursor: pointer;
+  margin-left: 1.4rem;
+  transition: all 0.3s;
+}
+.theme-toggle:hover {
+  color: var(--accent); border-color: var(--accent-dim);
+  transform: rotate(20deg);
+}
+
+.nav-right { display: flex; align-items: center; }
+
 .nav-burger {
   display: none; flex-direction: column; gap: 5px;
   background: none; border: none; cursor: pointer; padding: 6px;
+  margin-left: 1rem;
 }
 .nav-burger span {
   width: 22px; height: 2px; background: var(--text);
@@ -336,14 +354,14 @@ a:hover { color: var(--crab-light); }
 }
 .terminal-hint code { color: var(--accent-dim); }
 
-/* ---------- the crab ---------- */
+/* ---------- the lion ---------- */
 .crab-wrap {
   position: absolute; top: -58px; right: 34px; z-index: 5;
   display: flex; flex-direction: column; align-items: center;
 }
 
 .crab {
-  width: 84px; height: 63px;
+  width: 84px; height: 65px;
   cursor: pointer;
   animation: crab-bob 3.2s ease-in-out infinite;
   transition: transform 0.2s;
@@ -363,52 +381,53 @@ a:hover { color: var(--crab-light); }
   100% { translate: 0 0; }
 }
 
-/* claw wave + blink are driven per-group inside the svg */
+/* ear twitch + blink are driven per-group inside the svg */
 .crab .claw-left,
 .crab .claw-right,
 .crab .eyes { transform-box: fill-box; }
-.crab .claw-left { transform-origin: 82% 60%; animation: claw-wave 2.6s ease-in-out infinite; }
-.crab .claw-right { transform-origin: 18% 60%; }
+.crab .claw-left { transform-origin: 50% 100%; animation: claw-wave 2.6s ease-in-out infinite; }
+.crab .claw-right { transform-origin: 50% 100%; }
 .crab.excited .claw-right { animation: claw-wave-r 0.7s ease-in-out 3; }
 @keyframes claw-wave {
   0%, 78%, 100% { transform: rotate(0deg); }
-  84% { transform: rotate(-16deg); }
-  92% { transform: rotate(6deg); }
+  84% { transform: rotate(-12deg); }
+  92% { transform: rotate(5deg); }
 }
 @keyframes claw-wave-r {
   0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(18deg); }
+  50% { transform: rotate(14deg); }
 }
-.crab .eyes { animation: crab-blink 4.7s steps(1) infinite; transform-origin: 50% 22%; }
+.crab .eyes { animation: crab-blink 4.7s steps(1) infinite; transform-origin: 50% 45%; }
 @keyframes crab-blink {
   0%, 91%, 97%, 100% { transform: scaleY(1); }
   93%, 95% { transform: scaleY(0.12); }
 }
 
 .crab-bubble {
-  font-family: var(--font-pixel); font-size: 0.5rem; line-height: 1.6;
+  font-family: var(--font-pixel); font-size: 0.68rem; line-height: 1.75;
   color: #2b1608;
   background: #fff6ec;
-  border: 2px solid #6b2413;
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
-  padding: 0.5rem 0.7rem;
-  margin-bottom: 10px;
+  border: 3px solid #4a2c12;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.35);
+  padding: 0.75rem 1rem;
+  margin-bottom: 12px;
   position: relative;
   opacity: 0; translate: 0 6px; pointer-events: none;
   transition: opacity 0.25s, translate 0.25s;
-  max-width: 220px; text-align: center;
-  white-space: nowrap;
+  min-width: 150px; max-width: 320px; width: max-content;
+  text-align: center;
+  white-space: normal;
 }
 .crab-bubble::after {
-  content: ""; position: absolute; bottom: -8px; left: 50%; margin-left: -5px;
-  border: 5px solid transparent; border-top-color: #6b2413; border-bottom: none;
+  content: ""; position: absolute; bottom: -10px; left: 50%; margin-left: -6px;
+  border: 6px solid transparent; border-top-color: #4a2c12; border-bottom: none;
 }
 .crab-bubble.show { opacity: 1; translate: 0 0; }
 
-/* mini crabs for the party easter egg */
+/* mini lions for the party easter egg */
 .mini-crab {
   position: fixed; z-index: 200; pointer-events: none;
-  width: 36px; height: 27px; image-rendering: pixelated;
+  width: 36px; height: 28px; image-rendering: pixelated;
   animation: crab-fall linear forwards;
 }
 .mini-crab svg { width: 100%; height: 100%; }
@@ -417,8 +436,8 @@ a:hover { color: var(--crab-light); }
   to { transform: translateY(110vh) rotate(360deg); }
 }
 
-/* footer + nav crabs */
-.footer-crab { display: inline-flex; width: 42px; height: 32px; margin-bottom: 0.6rem; }
+/* footer + nav lions */
+.footer-crab { display: inline-flex; width: 42px; height: 33px; margin-bottom: 0.6rem; }
 .footer-crab svg { width: 100%; height: 100%; }
 
 /* ---------- scroll indicator ---------- */
@@ -730,4 +749,76 @@ a:hover { color: var(--crab-light); }
     transition-duration: 0.01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   LIGHT MODE — ancient egypt · sandstone & gold
+   (assassin's creed origins energy)
+   ============================================================ */
+[data-theme="light"] {
+  --bg: #e9d9ae;            /* sun-bleached sand */
+  --bg-soft: #e2cf9c;
+  --surface: #f3e7c6;       /* papyrus */
+  --surface-2: #ecdcb2;
+  --border: #c8ab6e;
+  --border-bright: #ab8c4b;
+
+  --text: #2e2011;          /* dark kohl brown */
+  --muted: #6a5430;
+  --faint: #8a7146;
+
+  --accent: #9a7414;        /* pharaoh gold */
+  --accent-dim: #7c5c10;
+  --accent-glow: rgba(154, 116, 20, 0.18);
+  --cyan: #16608f;          /* lapis lazuli */
+
+  --gold: #8a5c0d;
+}
+
+/* sandstone grid + softer scanlines */
+[data-theme="light"] .bg-grid {
+  background-image:
+    linear-gradient(rgba(122, 92, 16, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 92, 16, 0.07) 1px, transparent 1px);
+}
+[data-theme="light"] .scanline { opacity: 0.12; }
+[data-theme="light"] #particles { opacity: 0.45; }
+
+/* chrome */
+[data-theme="light"] .navbar {
+  background: rgba(233, 217, 174, 0.8);
+}
+[data-theme="light"] .navbar.scrolled {
+  background: rgba(233, 217, 174, 0.95);
+}
+[data-theme="light"] .nav-mobile {
+  background: rgba(243, 231, 198, 0.98);
+}
+[data-theme="light"] .section-alt {
+  background: linear-gradient(to bottom, transparent, rgba(214, 191, 138, 0.55) 12%, rgba(214, 191, 138, 0.55) 88%, transparent);
+}
+
+/* buttons keep contrast on gold */
+[data-theme="light"] .btn-primary {
+  background: var(--accent); color: #fdf6e0; border-color: var(--accent);
+}
+[data-theme="light"] .btn-primary:hover {
+  background: #b8901e; color: #fdf6e0;
+  box-shadow: 0 6px 28px rgba(154, 116, 20, 0.4);
+}
+
+/* the terminal stays dark — even in the desert, terminals are night creatures */
+
+[data-theme="light"] ::selection { background: rgba(154, 116, 20, 0.3); }
+[data-theme="light"] ::-webkit-scrollbar-track { background: var(--bg-soft); }
+
+/* softer card shadows on sand */
+[data-theme="light"] .skill-card:hover,
+[data-theme="light"] .about-card:hover,
+[data-theme="light"] .cert-card:hover,
+[data-theme="light"] .project-card:hover {
+  box-shadow: 0 14px 36px rgba(90, 66, 20, 0.25), 0 0 20px var(--accent-glow);
+}
+[data-theme="light"] .timeline-card:hover {
+  box-shadow: 0 10px 30px rgba(90, 66, 20, 0.2);
 }
