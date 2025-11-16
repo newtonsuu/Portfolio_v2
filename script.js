@@ -149,7 +149,7 @@ const MASCOTS = {
       "zero trust? i trust jericho.",
       "least privilege, bear necessities.",
       "found a flag once. ate it. (kept a copy.)",
-      "stardew says hi.",
+      "JJ says hi.",
       "I love Euni more than 100% uptime. 💗",
       "sudo make friends",
       "my firewall is un-bear-able.",
@@ -296,7 +296,7 @@ const PROMPT = `<span class="t-prompt">jericho@sec</span><span class="t-out">:~$
 
 const BOOT_LINES = [
   { cmd: "whoami" },
-  { out: 'Jericho "James" Guanga — cybersecurity @ Accenture PH', cls: "t-out" },
+  { out: 'Jericho "Jjampong" Guanga — cybersecurity @ Accenture PH', cls: "t-out" },
   { cmd: "cat status.txt" },
   { out: "[<span class='t-ok'>OK</span>] SC-300 · SC-900 · ISC2 CC · AZ-900 · OCI AI", cls: "t-out", html: true },
   { out: "[<span class='t-ok'>OK</span>] CTF 2025 — 1st place (K1RA, Mapúa)", cls: "t-out", html: true },
@@ -327,7 +327,7 @@ const COMMANDS = {
   <span class="t-ok">stardew</span>    — 🌱
   <span class="t-ok">clear</span>      — clean up`,
   whoami: () =>
-    `Jericho "James" Guanga
+    `Jericho "Jjampong" Guanga
 cybersecurity intern @ Accenture Philippines (Cyber Mastery Program)
 BS Information Technology — Mapúa University '26
 IAM · Sentinel · Zero Trust · AI automation with Claude + MCP`,
