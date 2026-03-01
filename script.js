@@ -115,32 +115,33 @@ const MASCOTS = {
     emoji: "🐻",
     word: "bear",
     name: "bjorn",
-    viewBox: "0 0 18 14",
+    viewBox: "0 0 20 16",
     colors: {
-      O: "#3a2415", B: "#8a5a2b", D: "#6e4520", L: "#a5713a",
-      M: "#d9b98a", W: "#fff6ec", P: "#221410", N: "#221410",
-      K: "#c9825e",
+      O: "#3a2415", B: "#8a5a2b", L: "#a5713a", M: "#d9b98a",
+      W: "#fff6ec", P: "#221410", N: "#221410", K: "#c9825e",
     },
     map: [
-      "..OOO........OOO..",
-      ".OBMBO......OBMBO.",
-      ".OBBBBOOOOOOBBBBO.",
-      "..OBBLLBBBBLLBBO..",
-      ".OBBBBBBBBBBBBBBO.",
-      "OBBOWWOBBBBOWWOBBO",
-      "OBBOWPOBBBBOWPOBBO",
-      "OBKBBBBBBBBBBBBKBO",
-      "OBBBBMMMMMMMMBBBBO",
-      ".OBBBMMONNOMMBBBO.",
-      ".OBBBMMNNNNMMBBBO.",
-      "..OBBBMMMMMMBBBO..",
-      "...OBBBBBBBBBBO...",
-      "....OOOOOOOOOO....",
+      "..OOO..........OOO..",
+      ".OBBBOO......OOBBBO.",
+      ".OBMMBBOOOOOOBBMMBO.",
+      "..OBBBBBBBBBBBBBBO..",
+      ".OBBLLBBBBBBBBLLBBO.",
+      ".OBBBBBBBBBBBBBBBBO.",
+      "OBBOWWOBBBBBBOWWOBBO",
+      "OBBOWPOBBBBBBOWPOBBO",
+      "OBBOWWOBBBBBBOWWOBBO",
+      "OBKBBBBMMMMMMBBBBKBO",
+      "OBBBBBMMMMMMMMBBBBBO",
+      ".OBBBBMMONNOMMBBBBO.",
+      ".OBBBBMMMNNMMMBBBBO.",
+      "..OBBBBMMMMMMBBBBO..",
+      "...OBBBBBBBBBBBBO...",
+      "....OOOOOOOOOOOO....",
     ],
     group(x, y) {
-      if ((y === 5 || y === 6) && ((x >= 3 && x <= 6) || (x >= 11 && x <= 14))) return "eyes";
-      if (y <= 2 && x <= 5) return "left";
-      if (y <= 2 && x >= 12) return "right";
+      if (y >= 6 && y <= 8 && ((x >= 3 && x <= 6) || (x >= 13 && x <= 16))) return "eyes";
+      if (y <= 2 && x <= 6) return "left";
+      if (y <= 2 && x >= 13) return "right";
       return "body";
     },
     lines: [
