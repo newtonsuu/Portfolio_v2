@@ -356,7 +356,7 @@ a:hover { color: var(--crab-light); }
 
 /* ---------- the lion ---------- */
 .crab-wrap {
-  position: absolute; top: -58px; right: 34px; z-index: 5;
+  position: absolute; top: -70px; right: 34px; z-index: 5;
   display: flex; flex-direction: column; align-items: center;
 }
 
