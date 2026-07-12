@@ -161,8 +161,8 @@ const MASCOTS = {
   },
 };
 
-const MASCOT_ORDER = ["lion", "crab", "bear"];
-let currentMascot = "lion";
+const MASCOT_ORDER = ["bear", "lion", "crab"];
+let currentMascot = "bear";
 
 function buildMascotSVG(kind = currentMascot) {
   const m = MASCOTS[kind];
@@ -276,7 +276,7 @@ function mascotRain() {
 /* restore saved mascot, then say hello */
 let savedMascot = null;
 try { savedMascot = localStorage.getItem("mascot"); } catch (_) { /* private mode */ }
-setMascot(MASCOTS[savedMascot] ? savedMascot : "lion");
+setMascot(MASCOTS[savedMascot] ? savedMascot : "bear");
 setTimeout(() => crabSay(MASCOTS[currentMascot].hello, 3000), 1800);
 
 /* cycle mascots from the navbar */
