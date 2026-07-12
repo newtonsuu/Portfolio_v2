@@ -1,4 +1,4 @@
-# Jericho Guanga — Portfolio 🦀
+# Jericho Guanga — Portfolio 🦀🦁🐻
 
 Personal portfolio: cybersecurity × Stardew Valley pixel vibes.
 Pure static site — no build step, no dependencies.
