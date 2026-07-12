@@ -1,65 +1,63 @@
 /* ============================================================
    Jericho Guanga — portfolio
-   crab engine · terminal · particles · reveals
+   lion engine · terminal · particles · reveals · theme
    ============================================================ */
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ============================================================
-   1. SNIPS THE CRAB — pixel-map SVG generator
+   1. LEO THE LION — pixel-map SVG generator
    ============================================================ */
 
-const CRAB_COLORS = {
-  O: "#6b2413", // outline
-  B: "#e8603c", // body
-  D: "#c24427", // shade
-  L: "#f5936b", // highlight
+const LION_COLORS = {
+  O: "#4a2c12", // outline
+  M: "#c9822e", // mane
+  D: "#a5641f", // mane shade / muzzle
+  F: "#f2c14e", // face gold
   W: "#fff6ec", // eye white
   P: "#221410", // pupil
-  K: "#f9a179", // blush
+  K: "#8a4b2d", // nose
 };
 
-/* 24 × 18 pixel map. rows 0-4 = eyes, cols 0-4 / 19-23 (rows 6-10) = claws */
-const CRAB_MAP = [
-  "........OO....OO........",
-  ".......OWWO..OWWO.......",
-  ".......OWPO..OWPO.......",
-  ".......OWWO..OWWO.......",
-  "........OO....OO........",
-  ".........O....O.........",
-  ".OO......OOOOOO......OO.",
-  "OBBBO...OBBBBBBO...OBBBO",
-  "OBBBO..OBLLBBLLBO..OBBBO",
-  ".OBBO.OBBBBBBBBBBO.OBBO.",
-  "..OO..OBBBBBBBBBBO..OO..",
-  "......OBKBBDDBBKBO......",
-  ".......ODDDDDDDDO.......",
-  "........OOOOOOOO........",
-  ".......O..O..O..O.......",
-  "......O...O..O...O......",
+/* 18 × 14 pixel map. rows 0-1 = ears, rows 5-6 (cols 3-6 / 11-14) = eyes */
+const LION_MAP = [
+  "...OO........OO...",
+  "..OMMO......OMMO..",
+  ".OMMMMMMMMMMMMMMO.",
+  "OMMFFFFFFFFFFFFMMO",
+  "OMFFFFFFFFFFFFFFMO",
+  "OMFOWWOFFFFOWWOFMO",
+  "OMFOWPOFFFFOWPOFMO",
+  "OMFFFFFFFFFFFFFFMO",
+  "OMFFFFFOKKOFFFFFMO",
+  ".OMFFFFDKKDFFFFMO.",
+  ".OMFFFDDDDDDFFFMO.",
+  "..OMMFFFFFFFFMMO..",
+  "...OMMMMMMMMMMO...",
+  "....OOOOOOOOOO....",
 ];
 
 function buildCrabSVG() {
   const NS = "http://www.w3.org/2000/svg";
   const svg = document.createElementNS(NS, "svg");
-  svg.setAttribute("viewBox", "0 0 24 18");
+  svg.setAttribute("viewBox", "0 0 18 14");
   svg.setAttribute("shape-rendering", "crispEdges");
   svg.setAttribute("aria-hidden", "true");
 
   const groups = {
     body: document.createElementNS(NS, "g"),
     eyes: document.createElementNS(NS, "g"),
-    clawLeft: document.createElementNS(NS, "g"),
-    clawRight: document.createElementNS(NS, "g"),
+    earLeft: document.createElementNS(NS, "g"),
+    earRight: document.createElementNS(NS, "g"),
   };
   groups.body.setAttribute("class", "crab-body");
   groups.eyes.setAttribute("class", "eyes");
-  groups.clawLeft.setAttribute("class", "claw-left");
-  groups.clawRight.setAttribute("class", "claw-right");
+  groups.earLeft.setAttribute("class", "claw-left");
+  groups.earRight.setAttribute("class", "claw-right");
 
-  CRAB_MAP.forEach((row, y) => {
+  LION_MAP.forEach((row, y) => {
     [...row].forEach((ch, x) => {
-      const color = CRAB_COLORS[ch];
+      const color = LION_COLORS[ch];
       if (!color) return;
       const rect = document.createElementNS(NS, "rect");
       rect.setAttribute("x", x);
@@ -69,34 +67,35 @@ function buildCrabSVG() {
       rect.setAttribute("fill", color);
 
       let target = groups.body;
-      if (y <= 4) target = groups.eyes;
-      else if (y >= 6 && y <= 10 && x <= 4) target = groups.clawLeft;
-      else if (y >= 6 && y <= 10 && x >= 19) target = groups.clawRight;
+      if ((y === 5 || y === 6) && ((x >= 3 && x <= 6) || (x >= 11 && x <= 14))) target = groups.eyes;
+      else if (y <= 1 && x < 9) target = groups.earLeft;
+      else if (y <= 1 && x >= 9) target = groups.earRight;
       target.appendChild(rect);
     });
   });
 
-  svg.append(groups.body, groups.clawLeft, groups.clawRight, groups.eyes);
+  svg.append(groups.body, groups.earLeft, groups.earRight, groups.eyes);
   return svg;
 }
 
-/* mount crabs everywhere they live */
+/* mount lions everywhere they live */
 const crabEl = document.getElementById("crab");
 crabEl.appendChild(buildCrabSVG());
 document.getElementById("navCrab").appendChild(buildCrabSVG());
 document.getElementById("footerCrab").appendChild(buildCrabSVG());
 
-/* ---------- crab personality ---------- */
+/* ---------- lion personality ---------- */
 const bubble = document.getElementById("crabBubble");
 const CRAB_LINES = [
-  "snip snip! 🦀",
-  "i'm snips. i do the QA here.",
+  "roar! 🦁",
+  "i'm leo. i do the QA here.",
   "zero trust? i trust jericho.",
-  "least privilege, most crab.",
+  "least privilege, maximum pride.",
   "found a flag once. kept it.",
   "stardew says hi.",
   "sudo make friends",
-  "my shell is hardened.",
+  "my mane is hardened.",
+  "guardian of the pyramids (and prod).",
   "click the terminal, it's real!",
 ];
 let crabClicks = 0;
@@ -116,7 +115,7 @@ crabEl.addEventListener("click", () => {
   crabEl.classList.add("hop", "excited");
 
   if (crabClicks % 7 === 0) {
-    crabSay("CRAB RAVE!!", 3200);
+    crabSay("LION RAVE!!", 3200);
     crabRain();
   } else {
     crabSay(CRAB_LINES[crabClicks % CRAB_LINES.length]);
@@ -124,9 +123,9 @@ crabEl.addEventListener("click", () => {
 });
 
 /* first hello */
-setTimeout(() => crabSay("hi, i'm snips! 🦀", 3000), 1800);
+setTimeout(() => crabSay("hi, i'm leo! 🦁", 3000), 1800);
 
-/* crab rain easter egg */
+/* lion rain easter egg */
 function crabRain() {
   if (reducedMotion) return;
   for (let i = 0; i < 22; i++) {
@@ -167,7 +166,7 @@ const COMMANDS = {
   <span class="t-ok">projects</span>   — jump to projects
   <span class="t-ok">ctf</span>        — the flag story
   <span class="t-ok">contact</span>    — reach out
-  <span class="t-ok">crab</span>       — summon snips
+  <span class="t-ok">leo</span>        — summon leo
   <span class="t-ok">stardew</span>    — 🌱
   <span class="t-ok">clear</span>      — clean up`,
   whoami: () =>
@@ -193,26 +192,27 @@ AZ-900  Azure Fundamentals .................... May 2024`,
 > extracted payload from VIDEO STEGANOGRAPHY (yes, really)
 > decoded final flag with Kali → <span class="t-warn">🏆 1st place</span>`,
   contact: () =>
-    `email   → <a href="mailto:jericho.rguanga@hotmail.com">jericho.rguanga@hotmail.com</a>
-github  → <a href="https://github.com/newtonsuu" target="_blank" rel="noopener noreferrer">github.com/newtonsuu</a>
-base    → Makati City, Philippines`,
-  crab: () => {
+    `email    → <a href="mailto:jericho.rguanga@hotmail.com">jericho.rguanga@hotmail.com</a>
+github   → <a href="https://github.com/newtonsuu" target="_blank" rel="noopener noreferrer">github.com/newtonsuu</a>
+linkedin → <a href="https://www.linkedin.com/in/jerichoguanga/" target="_blank" rel="noopener noreferrer">linkedin.com/in/jerichoguanga</a>
+base     → Makati City, Philippines`,
+  leo: () => {
     crabEl.classList.remove("hop");
     void crabEl.offsetWidth;
     crabEl.classList.add("hop");
-    crabSay("you rang? 🦀");
-    return `<span class="t-crabline">snips scuttles over. he is doing his best.</span>`;
+    crabSay("you rang? 🦁");
+    return `<span class="t-crabline">leo pads over, mane first. very majestic.</span>`;
   },
   stardew: () =>
     `<span class="t-crabline">🌱 farming season paused for cert season.
-current save: 2.5 hearts with the rock crab.</span>`,
+current save: petting every animal on the farm.</span>`,
   projects: () => {
     document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
     return "navigating to ~/projects ...";
   },
   ls: () => "about/  experience/  skills/  projects/  certs/  contact/  flag.txt",
   "cat flag.txt": () => `flag{y0u_f0und_m3_h1r3_j3r1ch0}`,
-  sudo: () => `<span class="t-err">jericho is not in the sudoers file. this incident will be reported to snips.</span>`,
+  sudo: () => `<span class="t-err">jericho is not in the sudoers file. this incident will be reported to leo.</span>`,
   clear: "CLEAR",
   exit: () => "nice try. there is no escape from the portfolio.",
 };
@@ -305,7 +305,8 @@ function spawnInput() {
     if (cmd) {
       cmdHistory.push(raw);
       historyIdx = -1;
-      const handler = COMMANDS[cmd] ?? COMMANDS[cmd.split(" ")[0]];
+      const handler =
+        COMMANDS[cmd] ?? COMMANDS[cmd === "crab" || cmd === "lion" ? "leo" : cmd.split(" ")[0]];
       if (handler === "CLEAR" || cmd === "clear") {
         term.innerHTML = "";
       } else if (handler) {
@@ -446,4 +447,33 @@ document.addEventListener("click", (e) => {
   ) {
     closeMobileMenu();
   }
+});
+
+/* ============================================================
+   5. THEME — dark cyber ⇄ ancient egypt light mode
+   ============================================================ */
+
+const themeToggle = document.getElementById("themeToggle");
+const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  const light = theme === "light";
+  themeToggle.textContent = light ? "☾" : "☀";
+  themeToggle.setAttribute(
+    "aria-label",
+    light ? "Switch to dark mode" : "Switch to light mode"
+  );
+  if (themeMeta) themeMeta.setAttribute("content", light ? "#e9d9ae" : "#0a0e13");
+  try { localStorage.setItem("theme", theme); } catch (_) { /* private mode */ }
+}
+
+let savedTheme = null;
+try { savedTheme = localStorage.getItem("theme"); } catch (_) { /* private mode */ }
+applyTheme(savedTheme === "light" ? "light" : "dark");
+
+themeToggle.addEventListener("click", () => {
+  const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+  applyTheme(next);
+  crabSay(next === "light" ? "welcome to the duat ☀️" : "back to the night hunt 🌙");
 });
