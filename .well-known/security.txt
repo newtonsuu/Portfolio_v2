@@ -1,0 +1,7 @@
+Contact: mailto:jericho.rguanga@hotmail.com
+Expires: 2027-07-12T00:00:00.000Z
+Preferred-Languages: en, fil
+Canonical: https://newtonsuu.github.io/Portfolio_v2/.well-known/security.txt
+Policy: https://github.com/newtonsuu/Portfolio_v2
+
+# Found something? Snips the crab thanks you for responsible disclosure. 🦀

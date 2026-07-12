@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://newtonsuu.github.io/Portfolio_v2/sitemap.xml

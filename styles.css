@@ -54,6 +54,23 @@ body {
 a { color: var(--accent); text-decoration: none; transition: color 0.25s; }
 a:hover { color: var(--crab-light); }
 
+/* ---------- keyboard accessibility ---------- */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: fixed; top: -100px; left: 1rem; z-index: 200;
+  padding: 0.6rem 1rem;
+  background: var(--surface-2); color: var(--accent);
+  border: 1px solid var(--accent);
+  font-family: var(--font-mono); font-size: 0.85rem;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 1rem; }
+
 /* ---------- ambient background ---------- */
 .bg-grid {
   position: fixed; inset: 0; z-index: -3;
