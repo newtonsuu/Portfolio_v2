@@ -150,6 +150,7 @@ const MASCOTS = {
       "least privilege, bear necessities.",
       "found a flag once. ate it. (kept a copy.)",
       "stardew says hi.",
+      "I love Euni more than 100% uptime. 💗",
       "sudo make friends",
       "my firewall is un-bear-able.",
       "click the terminal, it's real!",
