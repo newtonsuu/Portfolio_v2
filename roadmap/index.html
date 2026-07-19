@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#08111d">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="A session-based execution dashboard for career, graduation, and financial goals from July to October 2026.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+  <link rel="canonical" href="https://newtonsuu.github.io/Portfolio_v2/roadmap/">
+  <title>Mission Control | July–October 2026 Roadmap</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#execution-timeline">Skip to execution timeline</a>
+
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Mission Control roadmap home">
+      <span class="brand-mark" aria-hidden="true">JJ</span>
+      <span class="brand-copy">
+        <strong>Mission Control</strong>
+        <small>Jul 20–Oct 31, 2026</small>
+      </span>
+    </a>
+
+    <div class="header-actions">
+      <span class="session-badge" id="session-badge" title="Task progress is stored only in this browser tab's session">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="session-label">Session progress</span>
+      </span>
+      <a class="button button-quiet portfolio-link" href="../">Portfolio</a>
+      <button class="button button-quiet" id="open-reset" type="button">Reset progress</button>
+    </div>
+  </header>
+
+  <main id="top" class="page-shell">
+    <noscript>
+      <p class="noscript-notice">JavaScript is required for task progress, search, filters, and phase navigation.</p>
+    </noscript>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Personal execution dashboard</p>
+        <h1 id="hero-title">Make the next move <span>unmistakable.</span></h1>
+        <p class="hero-description">
+          A focused July-to-October plan for turning graduation, the first role, and protected savings into one coordinated finish.
+        </p>
+        <div class="hero-actions">
+          <button class="button button-primary" id="focus-next" type="button" aria-keyshortcuts="N">Show next action</button>
+          <a class="button button-secondary" href="#execution-timeline">View roadmap</a>
+        </div>
+        <p class="keyboard-hint"><kbd>/</kbd> search <span aria-hidden="true">·</span> <kbd>N</kbd> next action</p>
+      </div>
+
+      <div class="goal-stack" aria-label="Primary goals">
+        <article class="goal-card">
+          <span class="goal-number" aria-hidden="true">01</span>
+          <div>
+            <strong>Offer letter signed</strong>
+            <small>Turn every promising conversation into a written commitment.</small>
+          </div>
+        </article>
+        <article class="goal-card">
+          <span class="goal-number" aria-hidden="true">02</span>
+          <div>
+            <strong>Graduate cleared and on time</strong>
+            <small>Verify every requirement before it can become a blocker.</small>
+          </div>
+        </article>
+        <article class="goal-card">
+          <span class="goal-number" aria-hidden="true">03</span>
+          <div>
+            <strong>Enter payroll with savings, not debt</strong>
+            <small>Protect the transition fund and avoid unplanned commitments.</small>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="dashboard" aria-label="Overall roadmap status">
+      <article class="dashboard-card progress-card">
+        <div class="progress-visual">
+          <svg class="progress-ring" viewBox="0 0 120 120" role="img" aria-label="Overall completion: 0 percent" id="progress-ring">
+            <circle class="progress-ring-track" cx="60" cy="60" r="52" pathLength="100"></circle>
+            <circle class="progress-ring-value" id="progress-ring-value" cx="60" cy="60" r="52" pathLength="100"></circle>
+          </svg>
+          <div class="progress-ring-copy" aria-hidden="true">
+            <strong id="progress-percent">0%</strong>
+            <small>complete</small>
+          </div>
+        </div>
+        <div class="progress-copy">
+          <p class="metric-label">Overall completion</p>
+          <p class="metric-value"><span id="completed-count">0</span> of <span id="total-count">0</span> tasks</p>
+          <progress class="progress-bar" id="progress-bar" max="100" value="0" aria-label="Overall roadmap completion">0%</progress>
+          <p class="metric-note">Saved only for this browser session.</p>
+        </div>
+      </article>
+
+      <article class="dashboard-card phase-card-summary">
+        <div class="metric-heading">
+          <p class="metric-label">Current phase</p>
+          <span class="metric-chip" id="current-phase-chip">Today</span>
+        </div>
+        <p class="metric-value" id="current-phase">Loading…</p>
+        <p class="metric-note" id="current-phase-note">Calculated from today’s date.</p>
+      </article>
+
+      <article class="dashboard-card next-card">
+        <p class="metric-label">Next action</p>
+        <p class="metric-value metric-value-small" id="next-task">Loading…</p>
+        <p class="metric-note" id="next-task-meta"></p>
+        <button class="text-button" id="jump-next" type="button" aria-keyshortcuts="N">Focus this task <span aria-hidden="true">→</span></button>
+      </article>
+    </section>
+
+    <section class="phase-selector" aria-labelledby="phase-selector-title">
+      <div class="phase-selector-heading">
+        <p class="eyebrow">Navigate the plan</p>
+        <h2 id="phase-selector-title">Roadmap phases</h2>
+      </div>
+      <nav class="phase-nav" aria-label="Jump to a roadmap phase">
+        <div class="phase-nav-list" id="phase-nav-list"></div>
+      </nav>
+    </section>
+
+    <section class="workspace" aria-label="Roadmap workspace">
+      <aside class="control-panel" aria-label="Roadmap controls">
+        <div class="control-block">
+          <div class="control-heading">
+            <label class="control-label" for="task-search">Search tasks</label>
+            <kbd>/</kbd>
+          </div>
+          <div class="search-field">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+              <path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"></path>
+            </svg>
+            <input id="task-search" type="search" placeholder="Task, phase, or category" autocomplete="off" aria-keyshortcuts="/">
+          </div>
+        </div>
+
+        <div class="control-block">
+          <p class="control-label">Task status</p>
+          <div class="filter-list" role="group" aria-label="Filter tasks by completion">
+            <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">
+              <span>All</span><span class="filter-count" id="filter-count-all">0</span>
+            </button>
+            <button class="filter-button" type="button" data-filter="incomplete" aria-pressed="false">
+              <span>Incomplete</span><span class="filter-count" id="filter-count-incomplete">0</span>
+            </button>
+            <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">
+              <span>Completed</span><span class="filter-count" id="filter-count-completed">0</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="control-block next-actions-panel">
+          <p class="control-label">Up next</p>
+          <ol class="next-actions" id="next-actions"></ol>
+        </div>
+
+        <div class="privacy-note">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+            <path d="M12 3 5 6v5c0 4.6 2.9 8.4 7 10 4.1-1.6 7-5.4 7-10V6l-7-3Zm0 5v5m0 3h.01"></path>
+          </svg>
+          <div>
+            <strong>Public-safe by design</strong>
+            <p>No contact details, credentials, access codes, or private financial arrangements are stored here.</p>
+          </div>
+        </div>
+      </aside>
+
+      <div class="roadmap-panel" id="execution-timeline" tabindex="-1">
+        <div class="section-heading timeline-heading">
+          <div>
+            <p class="eyebrow">Weekly execution</p>
+            <h2>Execution timeline</h2>
+          </div>
+          <p class="results-summary" id="results-summary" aria-live="polite">Showing all tasks.</p>
+        </div>
+
+        <div class="timeline" id="timeline"></div>
+
+        <div class="empty-state" id="empty-state" hidden>
+          <span class="empty-icon" aria-hidden="true">⌁</span>
+          <h3 id="empty-title">No tasks found</h3>
+          <p id="empty-copy">Try a different search or task status.</p>
+          <button class="button button-secondary" id="clear-view" type="button">Clear search and filters</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="rules-section" id="standing-rules" tabindex="-1" aria-labelledby="rules-title">
+      <div class="section-heading rules-heading">
+        <div>
+          <p class="eyebrow">Decision guardrails</p>
+          <h2 id="rules-title">Standing rules</h2>
+        </div>
+        <p>Use these when pressure makes the next choice less obvious.</p>
+      </div>
+      <div class="rules-grid" id="rules-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>Mission Control · 2026</span>
+    <a href="../">Back to portfolio</a>
+    <span>Built for focus, not perfection.</span>
+  </footer>
+
+  <dialog class="reset-dialog" id="reset-dialog" aria-labelledby="reset-title">
+    <form method="dialog">
+      <span class="dialog-kicker">Session progress</span>
+      <h2 id="reset-title">Reset every checked task?</h2>
+      <p>This clears progress for the current browser session only. The roadmap itself will not change.</p>
+      <div class="dialog-actions">
+        <button class="button button-secondary" value="cancel">Keep progress</button>
+        <button class="button button-danger" value="confirm">Reset progress</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
